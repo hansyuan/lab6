@@ -45,6 +45,8 @@ function addProject(result) {
 	
 
 	$(".projects").html(projectHTML);
+
+
 	console.log("Length: " 
 		+ $("#" + result['id']).length );
 
@@ -53,9 +55,19 @@ function addProject(result) {
 	//".thumbnail" + 
 	" .details";
 
+	var image = "<img class=detailsImage src=" + 
+	result['image'] + ' >';
+
+	console.log(image)
+
 	console.log(id);
 	var change = $(id);
-	change.html(result['summary'] );
+	change.html(
+		image + 
+		"<h4>" + result['title'] + "</h4>" +
+		"<p>" + result['date'] + "</p>" + 
+		result['summary'] 
+		);
 
 }
 
