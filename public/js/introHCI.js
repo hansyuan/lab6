@@ -30,7 +30,7 @@ function addProjectDetails(e) {
 	console.log("User clicked on project " +
 	"/project/" + idNumber);
 
-	$("#testjs").click( function(e){});
+	//$("#testjs").click( function(e){});
 	var r = $.get("/project/" + idNumber , addProject);
 	
 }
@@ -76,5 +76,32 @@ function addProject(result) {
  * and apply it
  */
 function randomizeColors(e) {
+	e.preventDefault();
 	console.log("User clicked on color button");
+
+
+	var c = $.get("/palette/" , addPalettes);
+	//var colors = $.get("/palette")
+	//console.log(palette)
+	//var colors = palette['colors']
+	console.log(c);
+	//var colors = hex['colors']
+	
+
+}
+
+function addPalettes(colorz) {
+
+	//console.log("i AM HERE NOW: " + colors);
+	console.log(colorz['hex']);
+
+	var colors = colorz['hex'];
+
+	$('body').css('background-color', colors[0]);
+	$('.thumbnail').css('background-color', colors[1]);
+	$('h1, h2, h3, h4, h5, h5').css('color', colors[2]);
+	$('p').css('color', colors[3]);
+	$('.project img').css('opacity', .75);
+
+	return colors
 }
