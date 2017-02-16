@@ -27,13 +27,11 @@ function addProjectDetails(e) {
 	var idNumber = projectID.substr('project'.length);
 
 
-	console.log("User clicked on project " + idNumber);
+	console.log("User clicked on project " +
+	"/project/" + idNumber);
 
-	$("#testjs").click( function(e){
-		
-	}
-		);
-	$.get("/project/" + idNumber , addProject);
+	$("#testjs").click( function(e){});
+	var r = $.get("/project/" + idNumber , addProject);
 	
 }
 
@@ -44,8 +42,21 @@ function addProject(result) {
 		'<p>' + result['title'] + '</p>' + 
 		'<p><small>' + result['date'] + '</small></p></a>';
 
-	$("#project-container").html(projectHTML);
-	$("#project-description").html(result['summary']);
+	
+
+	$(".projects").html(projectHTML);
+	console.log("Length: " 
+		+ $("#" + result['id']).length );
+
+	var id =  "#" + "project" +
+	result['id'].toString() + 
+	//".thumbnail" + 
+	" .details";
+
+	console.log(id);
+	var change = $(id);
+	change.html(result['summary'] );
+
 }
 
 /*
